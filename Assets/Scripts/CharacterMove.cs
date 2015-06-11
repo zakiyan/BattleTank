@@ -46,7 +46,7 @@ public class CharacterMove : MonoBehaviour {
 		if (characterController.isGrounded) {
 			//　水平面での移動を考えるのでXZのみ扱う.
 			Vector3 destinationXZ = destination; 
-			destinationXZ.y = transform.position.y;// 高さを目的地と現在地を同じにしておく.
+//			destinationXZ.y = transform.position.y;// 高さを目的地と現在地を同じにしておく.
 			
 			//********* ここからXZのみで考える. ********
 			// 目的地までの距離と方角を求める.
@@ -80,13 +80,13 @@ public class CharacterMove : MonoBehaviour {
 					= Quaternion.RotateTowards(transform.FindChild("turret").rotation,
 					                           characterTargetRotation,
 					                           rotationSpeed * Time.deltaTime);
-			} else {
+//			} else {
 				// 強制向き指定.
-				Quaternion characterTargetRotation = Quaternion.LookRotation(forceRotateDirection);
-				transform.FindChild("turret").rotation
-					= Quaternion.RotateTowards(transform.FindChild("turret").rotation,
-					                           characterTargetRotation,
-					                           rotationSpeed * Time.deltaTime);
+//				Quaternion characterTargetRotation = Quaternion.LookRotation(forceRotateDirection);
+//				transform.FindChild("turret").rotation
+//					= Quaternion.RotateTowards(transform.FindChild("turret").rotation,
+//					                           characterTargetRotation,
+//					                           rotationSpeed * Time.deltaTime);
 			}
 			
 		}
@@ -107,8 +107,8 @@ public class CharacterMove : MonoBehaviour {
 			arrived = true;
 		
 		// 強制的に向きを変えるを解除.
-		if (forceRotate && Vector3.Dot(transform.forward,forceRotateDirection) > 0.99f)
-			forceRotate = false;
+//		if (forceRotate && Vector3.Dot(transform.forward,forceRotateDirection) > 0.99f)
+//			forceRotate = false;
 		
 		
 	}
