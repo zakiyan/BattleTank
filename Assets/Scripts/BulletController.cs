@@ -6,7 +6,7 @@ public class BulletController : MonoBehaviour {
 	BulletStatus status;
 	public GameObject bullet;
 	public Transform spawn;
-	public float speed = 8000;
+	public float speed = 5000;
 
 	void Start(){
 		status = GetComponent<BulletStatus> ();
@@ -31,7 +31,7 @@ public class BulletController : MonoBehaviour {
 			status.Bullet -= 1;
 
 			if(status.Bullet == 0){
-				Invoke("charge",8);
+				Invoke("charge",5);
 			}
 		}
 

@@ -15,6 +15,8 @@ namespace UnityChan
 
 	public class UnityChanControlScriptWithRgidBody : MonoBehaviour
 	{
+		public Transform spawn;
+		public GameObject grenade;
 
 		public float animSpeed = 1.5f;				// アニメーション再生速度設定
 		public float lookSmoother = 3.0f;			// a smoothing setting for camera motion
@@ -30,7 +32,7 @@ namespace UnityChan
 		// 旋回速度
 		public float rotateSpeed = 2.0f;
 		// ジャンプ威力
-		public float jumpPower = 3.0f; 
+		public float jumpPower = 1500000.0f; 
 		// キャラクターコントローラ（カプセルコライダ）の参照
 		private CapsuleCollider col;
 		private Rigidbody rb;
@@ -176,18 +178,23 @@ namespace UnityChan
 					anim.SetBool ("Rest", false);
 				}
 			}
+		
+			if (Input.GetButtonDown ("Fire1")) {
+				GameObject obj = GameObject.Instantiate(grenade)as GameObject;
+				obj.transform.position = spawn.position;
+			}
 		}
 
 		void OnGUI ()
 		{
-			GUI.Box (new Rect (Screen.width - 260, 10, 250, 150), "Interaction");
+/*			GUI.Box (new Rect (Screen.width - 260, 10, 250, 150), "Interaction");
 			GUI.Label (new Rect (Screen.width - 245, 30, 250, 30), "Up/Down Arrow : Go Forwald/Go Back");
 			GUI.Label (new Rect (Screen.width - 245, 50, 250, 30), "Left/Right Arrow : Turn Left/Turn Right");
 			GUI.Label (new Rect (Screen.width - 245, 70, 250, 30), "Hit Space key while Running : Jump");
 			GUI.Label (new Rect (Screen.width - 245, 90, 250, 30), "Hit Spase key while Stopping : Rest");
 			GUI.Label (new Rect (Screen.width - 245, 110, 250, 30), "Left Control : Front Camera");
 			GUI.Label (new Rect (Screen.width - 245, 130, 250, 30), "Alt : LookAt Camera");
-		}
+*/		}
 
 
 		// キャラクターのコライダーサイズのリセット関数
